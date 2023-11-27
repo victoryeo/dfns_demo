@@ -64,7 +64,7 @@ function DFNS() {
       const resp1 = await fetch('/api/hello', { method: 'GET'})
       console.log(await resp1.json())
       const resp2 = await fetch('/api/register/init', 
-        { method: 'POST', body: JSON.stringify({ "email": inputEmail }) })
+        { method: 'POST', body: JSON.stringify({ email: inputEmail }) })
       console.log(await resp2.json())
     } catch (e) {
       console.log(e)

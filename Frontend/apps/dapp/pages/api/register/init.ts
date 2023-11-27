@@ -12,10 +12,12 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     console.log(req.body)
+    const emailBody = JSON.parse(req.body)
+    console.log(emailBody.email)
     console.log(process.env.DFNS_APPLICATION_ORIGIN)
     // Initiate end-user delegated registration
     const registrationChallenge = await dfns.auth.createDelegatedUserRegistration({
-      body: { email: req.body.email, kind: UserAuthKind.EndUser },
+      body: { email: emailBody.email, kind: UserAuthKind.EndUser },
     })
     res.status(200).json({ message: 'OK!' })
   } else {
