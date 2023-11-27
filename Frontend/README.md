@@ -1,10 +1,7 @@
 # DFNS Demo App
-
-## Legagy Dependency
-### find the dependency
-npm view viem@1.6.0 peerDependencies
-### install with dependency
-npm i --save wagmi viem @rainbow-me/rainbowkit --legacy-peer-deps
+create .env.local from .env  
+yarn  
+npm run start  
 
 ## NX build system
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
