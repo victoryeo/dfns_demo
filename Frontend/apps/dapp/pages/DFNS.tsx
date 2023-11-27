@@ -39,6 +39,7 @@ const theme = extendTheme({
 
 function DFNS() {
   const [vaultId, setVaultId] = useState("0");
+  const [inputEmail, setInputEmail] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isHandlingMinting, setIsHandlingMinting] = useState(false);
   const [isNftAddress, setisNftAddress] = useState(false);
@@ -58,12 +59,18 @@ function DFNS() {
 
   const onRegisterUser = async () => {
     console.log("register user")
+    console.log(inputEmail)
 
   }
 
   const onLoginUser = async () => {
     console.log("login user")
+    console.log(inputEmail)
+  }
 
+  const onUpdateInputValue = async (e) => {
+    console.log(e.target.value)
+    setInputEmail(e.target.value)
   }
 
   return (
@@ -97,6 +104,7 @@ function DFNS() {
               </ModalHeader>
               <ModalCloseButton />
               <ModalBody textAlign={"center"} fontSize={"12px"}>
+                <input type="email" name="email" placeholder="email" className="input" onChange={onUpdateInputValue} />
                 <Button border="2px" colorScheme="blue" onClick={onRegisterUser} margin={4}>
                   Register User
                 </Button>

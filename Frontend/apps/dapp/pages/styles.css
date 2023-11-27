@@ -1802,3 +1802,9 @@ ul.dashboard-notes li:nth-child(3){
 .blue_btn {
   background-color: #91c8e4 !important;
 }
+.input {
+  height: 25px;
+  border :#111 !important;
+  border-radius: 2px;
+  background-color: #91c8e4 !important;
+}
