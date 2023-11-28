@@ -48,7 +48,6 @@ function DFNS() {
 
   useEffect(() => {
     const fetchVault = async () => {
-      console.log(process.env.NX_FIREBLOCKS_API_KEY)
       console.log(process.env.NX_WALLET_CONNECT_ID)
       
 
