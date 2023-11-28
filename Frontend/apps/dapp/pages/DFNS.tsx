@@ -16,6 +16,7 @@ import {
   Text
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { WebAuthn } from '@dfns/sdk-webauthn'
 
 const linkDFNSSandbox =
   "https://app.dfns.ninja/";
@@ -54,7 +55,7 @@ function DFNS() {
     }
 
     fetchVault().catch(console.error);
-  }, []);
+  }, [])
 
   const onRegisterUser = async () => {
     console.log("register user")
@@ -64,7 +65,19 @@ function DFNS() {
       console.log(await resp1.json())
       const resp2 = await fetch('/api/register/init', 
         { method: 'POST', body: JSON.stringify({ email: inputEmail }) })
-      console.log(await resp2.json())
+      const challenge = await resp2.json()
+      console.log(challenge)
+      const webauthn = new WebAuthn({ rpId: process.env.NEXT_PUBLIC_DFNS_WEBAUTHN_RPID! })
+      const attestation = await webauthn.create(challenge)
+      const resp3 = await fetch('./api/register/complete', {
+        method: 'POST',
+        body: JSON.stringify({
+          tempAuthToken: challenge.temporaryAuthenticationToken,
+          signedChallenge: { firstFactorCredential: attestation },
+        }),
+      })
+      const resultFinal = await resp3.json()
+      console.log(resultFinal)
     } catch (e) {
       console.log(e)
     }
