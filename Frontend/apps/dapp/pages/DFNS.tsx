@@ -67,7 +67,7 @@ function DFNS() {
         { method: 'POST', body: JSON.stringify({ email: inputEmail }) })
       const challenge = await resp2.json()
       console.log(challenge)
-      const webauthn = new WebAuthn({ rpId: process.env.NEXT_PUBLIC_DFNS_WEBAUTHN_RPID! })
+      /*const webauthn = new WebAuthn({ rpId: process.env.NEXT_PUBLIC_DFNS_WEBAUTHN_RPID! })
       const attestation = await webauthn.create(challenge)
       const resp3 = await fetch('./api/register/complete', {
         method: 'POST',
@@ -77,7 +77,7 @@ function DFNS() {
         }),
       })
       const resultFinal = await resp3.json()
-      console.log(resultFinal)
+      console.log(resultFinal)*/
     } catch (e) {
       console.log(e)
     }

@@ -1,6 +1,8 @@
 import { DfnsApiClient, DfnsDelegatedApiClient } from '@dfns/sdk'
 import { AsymmetricKeySigner } from '@dfns/sdk-keysigner'
 
+console.log("utils", process.env.DFNS_SERVICE_ACCOUNT_PRIVATE_KEY)
+console.log("utils", process.env.DFNS_SERVICE_ACCOUNT_TOKEN)
 export const signer = new AsymmetricKeySigner({
   appOrigin: process.env.DFNS_APPLICATION_ORIGIN!,
   credId: process.env.DFNS_SERVICE_ACCOUNT_CREDENTIAL_ID!,

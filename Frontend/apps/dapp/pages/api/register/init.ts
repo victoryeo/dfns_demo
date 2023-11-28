@@ -19,6 +19,7 @@ export default async function handler(
     const registrationChallenge = await dfns.auth.createDelegatedUserRegistration({
       body: { email: emailBody.email, kind: UserAuthKind.EndUser },
     })
+    console.log(registrationChallenge)
     res.status(200).json({ message: 'OK!' })
   } else {
     // Handle any other HTTP method
