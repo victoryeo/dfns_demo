@@ -8,7 +8,7 @@ type ResponseData = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
+  res: NextApiResponse
 ) {
   if (req.method === 'POST') {
     console.log(req.body)
@@ -20,7 +20,7 @@ export default async function handler(
       body: { email: emailBody.email, kind: UserAuthKind.EndUser },
     })
     console.log(registrationChallenge)
-    res.status(200).json({ message: 'OK!' })
+    res.status(200).json(registrationChallenge)
   } else {
     // Handle any other HTTP method
     res.status(200).json({ message: 'NOK!' })

@@ -8,7 +8,7 @@ type ResponseData = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
+  res: NextApiResponse
 ) {
   if (req.method === 'POST') {
     console.log(req.body)
@@ -41,7 +41,7 @@ export default async function handler(
       body: { username: result.user.username },
     })
 
-    res.status(200).json({ message: JSON.stringify(result) })
+    res.status(200).json({result, permission, permissionAssignment})
   } else {
     // Handle any other HTTP method
     res.status(200).json({ message: 'NOK!' })
