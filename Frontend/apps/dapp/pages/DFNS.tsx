@@ -42,10 +42,7 @@ function DFNS() {
   const [vaultId, setVaultId] = useState("0");
   const [inputEmail, setInputEmail] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isHandlingMinting, setIsHandlingMinting] = useState(false);
-  const [isNftAddress, setisNftAddress] = useState(false);
-  const [nftAddress, setNftAddress] = useState("");
-  const [nftIndex, setNftIndex] = useState(0);
+  const [registerResult, setRegisterResult] = useState<string>("");
 
   useEffect(() => {
     const fetchVault = async () => {
@@ -79,6 +76,8 @@ function DFNS() {
       })
       const resultFinal = await resp3.json()
       console.log(resultFinal)
+      console.log(resultFinal?.result)
+      setRegisterResult(resultFinal?.result?.credential?.uuid)
     } catch (e) {
       console.log(e)
     }
@@ -143,7 +142,9 @@ function DFNS() {
               <Center>
                 <ModalFooter>
                   <Center marginBottom={1}>
-                  
+                    <div>
+                    Register result: {registerResult}
+                    </div>
                   </Center>
                 </ModalFooter>
               </Center>
